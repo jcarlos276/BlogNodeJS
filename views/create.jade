@@ -1,0 +1,21 @@
+extends layout
+
+block content
+    .container
+        .row
+            .col-md-6.col-md-offset-3
+                h1.display-4.m-b-2 Crear Noticia
+                form(method='POST' action='/news_crear')
+                    div.form-group
+                        label(for='titulo') Título:
+                        input#titulo.form-control(type='text' name='titulo')
+                    div.form-group
+                        label(for='descripcion') Descripción:
+                        input#descripcion.form-control(type='text' name='descripcion')
+                    div.form-group
+                        label(for='categoria') Categoría:
+                        input#categoria.form-control(type='text' name='categoria')
+                    div.form-group
+                        label(for='fecha') Fecha:
+                        input#fecha.form-control(type='date' name='fecha')
+                    button.btn.btn-primary(type='submit') Grabar

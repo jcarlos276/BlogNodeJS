@@ -1,0 +1,31 @@
+extends layout
+
+block content
+    .container
+        br
+        a.btn.btn-success(href='/crear') Crear
+        table.table
+            thead
+                tr
+                    th Titulo
+                    th Descripción
+                    th Fecha
+                    th Categoria
+            tbody
+                for noticias in data
+                    tr
+                        td= noticias._id
+                        td= noticias.titulo
+                        td= noticias.descripcion
+                        td= noticias.fecha
+                        td= noticias.categoria
+                        td
+                            a.btn.btn-success(href="/news_detail?_id=" + noticias.id) Ver detalles
+                        td
+                            a.btn.btn-warning(href="/editar?_id=" + noticias.id) Edit
+                        td
+                            form(method="post" action="/new/news_remove?_id="+noticias._id)
+                                button.btn.btn-danger(type="submit")
+                                    span.glyphicon.glyphicon-trash
+                        td
+                            a.btn.btn-warning(href="/comments?_id="+noticias._id) Comentar

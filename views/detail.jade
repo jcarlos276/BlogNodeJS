@@ -1,0 +1,38 @@
+extends layout
+
+block content
+    .container
+        .main.container
+            .row
+                .text-center
+                    h1.display-4.m-b-2 Detalle de Noticia
+                    div.form-group
+                        label(for='titulo') Título:
+                        input#titulo.form-control(type='text' name='titulo' value= data.titulo, readonly)
+                    div.form-group
+                        label(for='descripcion') Descripción:
+                        input#descripcion.form-control(type='text' name='descripcion' value= data.descripcion, readonly)
+                    div.form-group
+                        label(for='categoria') Categoría:
+                        input#categoria.form-control(type='text' name='categoria' value= data.categoria, readonly)
+                    div.form-group
+                        label(for='fecha') Fecha:
+                        input#fecha.form-control(type='date' name='fecha' value= data.fecha, readonly)
+                    h1 Comentarios:
+                    .row
+                        if (data.comentarios.length) >= 1
+                            for comment in data.comentarios
+                                .col-lg-3.col-md-3.col-sm-3.col-xs-3
+                                    .panel.panel-info
+                                        .panel-heading(style="padding:20px;")
+                                            h4=comment.autor
+                                        .panel-body
+                                            .text-left
+                                                label Mensaje:
+                                                    p=comment.mensaje
+                                                    br
+                                                    label Fecha:
+                                                    p=comment.fecha
+                        else
+                            .h3.display-3.m-b-2 Aún no tienes ningún comentario 💩
+                    a.btn.btn-primary(href='/') Volver
